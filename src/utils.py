@@ -43,8 +43,11 @@ def evaluate_model(X_train,y_train,X_test,y_test,models):
         logging.error('Exception occured during model training')
         raise CustomException(e,sys)
         raise CustomException(e,sys)
-    # mae=mean_absolute_error(true,predicted)
-    # mse=mean_squared_error(true,predicted)
-    # rmse=np.sqrt(mean_squared_error(true,predicted))
-    # r2_square=r2_score(true,predicted)
-    # return mae,rmse,r2_square
+  
+def load_object(file_path):
+    try:
+        with open(file_path,'rb') as file_obj:
+            return pickle.load(file_obj)
+    except Exception as e:
+        logging.error('Exception occured in load object function from utils')
+        raise CustomException(e,sys)
